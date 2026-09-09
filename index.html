@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>James J Benavides</title>
+<meta name="description" content="Freelance. Construyo productos digitales donde el diseño y el código trabajan en armonía.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
+<style>
+  /* Paleta Apple: blanco roto, negro suave y un solo acento azul.
+     El cuerpo va en la tipografía del sistema, que en un Mac ES San Francisco:
+     más fiel que cualquier sustituta de Google Fonts. Bebas Neue para los
+     títulos, que es la que te gustó de Fake Gods. */
+  :root {
+    --nube:      #f5f5f7;
+    --papel:     #ffffff;
+    --tinta:     #1d1d1f;
+    --tinta-2:   #6e6e73;
+    --tinta-3:   #86868b;
+    --azul:      #0071e3;
+    --azul-claro:#2997ff;
+    --linea:     #d2d2d7;
+    --negro:     #000000;
+    --medida:    69rem;
+    --curva:     cubic-bezier(.28,.11,.32,1);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    margin: 0;
+    background: var(--papel);
+    color: var(--tinta);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.5;
+    letter-spacing: -.01em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--azul); color: #fff; }
+  :focus-visible { outline: 3px solid var(--azul); outline-offset: 4px; border-radius: 6px; }
+
+  .marco { max-width: var(--medida); margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 2.5rem); }
+
+  h1, h2, h3 { margin: 0; }
+
+  .display {
+    font-family: "Bebas Neue", Impact, sans-serif;
+    font-weight: 400;
+    letter-spacing: .015em;
+    line-height: .92;
+  }
+
+  /* Etiqueta monoespaciada: el único guiño Y2K, en pequeño y sin neón. */
+  .clave {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: .7rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--tinta-3);
+  }
+
+  /* ---------- Barra ---------- */
+  header.barra {
+    position: sticky; top: 0; z-index: 30;
+    background: rgba(255,255,255,.72);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,.06);
+  }
+  .barra nav {
+    max-width: var(--medida); margin: 0 auto;
+    padding: 0 clamp(1.25rem, 5vw, 2.5rem);
+    height: 48px; display: flex; align-items: center; gap: 1.75rem;
+  }
+  .barra .yo { font-weight: 600; font-size: .95rem; margin-right: auto; letter-spacing: -.02em; }
+  .barra a {
+    color: var(--tinta); text-decoration: none; font-size: .82rem;
+    opacity: .82; transition: opacity 200ms var(--curva);
+  }
+  .barra a:hover { opacity: 1; }
+  @media (max-width: 600px) { .barra a.opcional { display: none; } }
+
+  section { padding: clamp(5rem, 12vw, 9rem) 0; }
+  section + section { border-top: 1px solid var(--linea); }
+
+  /* ---------- Portada ---------- */
+  /* Alto contenido, no una pantalla entera: con 78vh y centrado, el nombre
+     quedaba demasiado abajo y el primer golpe de vista era hueco. */
+  .portada {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: clamp(4rem, 9vw, 7rem) clamp(1.25rem, 5vw, 2.5rem) clamp(5rem, 10vw, 8rem);
+    background: radial-gradient(120% 80% at 50% 0%, #fbfbfd 0%, #ffffff 60%);
+  }
+  .portada h1 { font-size: clamp(4.5rem, 17vw, 11rem); text-wrap: balance; }
+  .portada .rol {
+    font-size: clamp(1.15rem, 2.6vw, 1.6rem);
+    color: var(--tinta-2);
+    max-width: 34ch;
+    margin: 1.75rem 0 0;
+    letter-spacing: -.02em;
+  }
+  .acciones { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2.5rem; }
+
+  /* Botones tipo Apple: pastilla de 980px de radio */
+  .pastilla {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 44px; padding: .7rem 1.4rem;
+    border-radius: 980px; font-size: 1rem; text-decoration: none;
+    transition: background 200ms var(--curva), transform 200ms var(--curva);
+  }
+  .pastilla.solida { background: var(--azul); color: #fff; }
+  .pastilla.solida:hover { background: #0077ed; transform: translateY(-1px); }
+  .pastilla.hueca { color: var(--azul); border: 1px solid var(--azul); }
+  .pastilla.hueca:hover { background: var(--azul); color: #fff; }
+  @media (prefers-reduced-motion: reduce) { .pastilla:hover { transform: none; } }
+
+  /* ---------- Bloques ---------- */
+  .titulo-seccion { font-size: clamp(2.6rem, 7vw, 4.5rem); margin-bottom: 2rem; }
+  .parrafo { font-size: clamp(1.05rem, 2.2vw, 1.3rem); color: var(--tinta-2); max-width: 58ch; letter-spacing: -.015em; }
+  .parrafo + .parrafo { margin-top: 1.25rem; }
+
+  .capacidades { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2.5rem; }
+  .capacidad {
+    background: var(--nube); color: var(--tinta);
+    padding: .55rem 1rem; border-radius: 980px; font-size: .92rem;
+    transition: background 200ms var(--curva), color 200ms var(--curva);
+  }
+  .capacidad:hover { background: var(--tinta); color: #fff; }
+
+  /* ---------- Proyectos ---------- */
+  .proyectos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1.25rem; }
+  .proyecto {
+    background: var(--nube); border-radius: 20px; padding: clamp(1.6rem, 3.5vw, 2.2rem);
+    display: flex; flex-direction: column; gap: .75rem; min-height: 260px;
+    text-decoration: none; color: inherit;
+    box-shadow: 0 4px 30px rgba(0,0,0,.06);
+    transition: transform 300ms var(--curva), box-shadow 300ms var(--curva);
+  }
+  .proyecto:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.1); }
+  @media (prefers-reduced-motion: reduce) { .proyecto:hover { transform: none; } }
+  .proyecto h3 { font-size: 1.5rem; letter-spacing: -.02em; font-weight: 600; }
+  .proyecto p { color: var(--tinta-2); font-size: 1rem; margin: 0; flex: 1; }
+  .proyecto .ir { color: var(--azul); font-size: .95rem; }
+  .pendiente { border: 1px dashed var(--linea); background: transparent; box-shadow: none; }
+  .pendiente h3, .pendiente p { color: var(--tinta-3); }
+
+  /* ---------- Contacto ---------- */
+  .contacto { background: var(--negro); color: #f5f5f7; }
+  .contacto .titulo-seccion { color: #fff; }
+  .contacto .parrafo { color: #a1a1a6; }
+  .contacto .clave { color: #6e6e73; }
+  .contacto .pastilla.solida { background: var(--azul-claro); color: #000; }
+  .contacto .pastilla.solida:hover { background: #47a9ff; }
+  .redes { display: flex; gap: 1.5rem; margin-top: 2.5rem; }
+  .redes a { color: #a1a1a6; text-decoration: none; font-size: .95rem; transition: color 200ms var(--curva); }
+  .redes a:hover { color: var(--azul-claro); }
+
+  footer { background: var(--nube); padding: 2rem 0; }
+  footer p { margin: 0; color: var(--tinta-3); font-size: .8rem; }
+
+  /* ---------- Entrada: al cargar y al hacer scroll ----------
+     Estado en reposo VISIBLE. La clase la pone el script solo si hay JS y no se
+     ha pedido menos movimiento; así la página nunca puede quedarse en blanco. */
+  .js-mov .sube { opacity: 0; transform: translateY(24px); }
+  .js-mov .sube.dentro {
+    opacity: 1; transform: none;
+    transition: opacity 800ms var(--curva), transform 800ms var(--curva);
+    transition-delay: var(--espera, 0ms);
+  }
+</style>
+</head>
+<body>
+
+<header class="barra">
+  <nav>
+    <span class="yo">James J Benavides</span>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#proyectos">Proyectos</a>
+    <a class="opcional" href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<main>
+  <section class="portada marco">
+    <p class="clave sube">Freelance · Barcelona</p>
+    <h1 class="display sube">James J<br>Benavides</h1>
+    <p class="rol sube">
+      Automatizo el trabajo repetitivo de negocios pequeños.
+      Facturas, documentos y avisos que se hacen solos.
+    </p>
+    <div class="acciones sube">
+      <a class="pastilla solida" href="#proyectos">Ver proyectos</a>
+      <a class="pastilla hueca" href="#contacto">Hablemos</a>
+    </div>
+  </section>
+
+  <section id="sobre-mi" class="marco">
+    <p class="clave sube">Sobre mí</p>
+    <h2 class="display titulo-seccion sube">Trabajo por mi cuenta.</h2>
+    <p class="parrafo sube">
+      Automatizo las tareas repetitivas de negocios pequeños: facturas que se
+      escriben solas desde una foto, documentos que salen con tu marca en vez
+      de en Helvetica gris, avisos que llegan sin que nadie se acuerde de
+      mandarlos.
+    </p>
+    <p class="parrafo sube">
+      Soy técnico de farmacia, así que cuando un negocio me cuenta su lío de
+      papeles no necesito que me lo traduzcan. Y si lo que necesitas no te lo
+      puedo hacer, te lo digo el primer día.
+    </p>
+    <div class="capacidades sube">
+      <!-- Solo lo que puedes enseñar hecho. React y TypeScript venían en la
+           plantilla y no hay un proyecto tuyo que los respalde: en una
+           entrevista de veinte minutos eso se cae, y se cae con todo lo demás
+           detrás. Cuando tengas uno, se añaden. -->
+      <span class="capacidad">Automatización</span>
+      <span class="capacidad">Python</span>
+      <span class="capacidad">Swift</span>
+      <span class="capacidad">HTML y CSS</span>
+      <span class="capacidad">Agentes e integraciones</span>
+      <span class="capacidad">Diseño de interfaz</span>
+      <span class="capacidad">macOS y línea de comandos</span>
+    </div>
+  </section>
+
+  <section id="proyectos" class="marco">
+    <p class="clave sube">Proyectos</p>
+    <h2 class="display titulo-seccion sube">Lo que he hecho.</h2>
+    <div class="proyectos">
+      <!-- Casos reales, con el número delante. Un cliente no compra "hice una
+           herramienta"; compra "947 ficheros, cero perdidos". Nada inventado:
+           todos estos números están medidos. -->
+      <a class="proyecto sube" href="ecosistema.html">
+        <span class="clave">Automatización · macOS</span>
+        <h3>Un asistente que contesta por WhatsApp</h3>
+        <p>
+          Ocho servicios en segundo plano que leen el calendario, traducen
+          cartas oficiales del alemán desde una captura de pantalla y emiten
+          facturas a partir de la foto de una libreta. Memoria compartida entre
+          dos agentes distintos, sincronizada sola cada cinco minutos.
+        </p>
+        <span class="ir">Ver cómo funciona →</span>
+      </a>
+      <a class="proyecto sube" href="#contacto">
+        <span class="clave">Rescate de datos</span>
+        <h3>1.036 ficheros a 237, sin perder ninguno</h3>
+        <p>
+          Un comando de organización había aplanado 947 ficheros y dejado el
+          78 % en una carpeta única. Reconstruí el orden original leyendo la
+          numeración, separé lo recuperable de lo irrelevante y auditué el
+          repositorio: 119 ficheros publicados, ninguna credencial expuesta.
+        </p>
+        <span class="ir">Cuéntame tu caso →</span>
+      </a>
+      <a class="proyecto sube" href="#contacto">
+        <span class="clave">Documentos · Diseño</span>
+        <h3>Informes con tu marca, no en Helvetica gris</h3>
+        <p>
+          El generador de PDF por defecto trae la tipografía cableada dentro:
+          no hay forma de aplicarle un estilo y las tablas anchas se salen de
+          la página. Lo reescribí para que pase por HTML y se imprima desde el
+          navegador. Mismo contenido, con la identidad de quien lo firma.
+        </p>
+        <span class="ir">Cuéntame tu caso →</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="contacto" class="contacto">
+    <div class="marco">
+      <p class="clave sube">Contacto</p>
+      <h2 class="display titulo-seccion sube">¿Hablamos?</h2>
+      <p class="parrafo sube">
+        Cuéntame qué necesitas y te digo si puedo ayudarte. Si no puedo,
+        también te lo digo.
+      </p>
+      <div class="acciones sube">
+        <a class="pastilla solida" href="mailto:jamesjoelbenavides2004@gmail.com">Escríbeme</a>
+      </div>
+      <div class="redes sube">
+        <!-- Solo lo que existe. Tres enlaces que no llevan a ningún sitio
+             dicen «esto está a medias», y es lo primero que mira quien te va
+             a contratar. LinkedIn se añade el día que tengas perfil. -->
+        <a href="https://github.com/KArmaaaaaaaaaaaa">GitHub</a>
+        <a href="https://karmaaaaaaaaaaaa.github.io/james-j-portfolio/">Un trabajo en vivo</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="marco"><p>© 2026 James J Benavides</p></div>
+</footer>
+
+<script>
+(function () {
+  var quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (quieto || !('IntersectionObserver' in window)) return;
+
+  document.documentElement.classList.add('js-mov');
+  var bloques = document.querySelectorAll('.sube');
+
+  var vigia = new IntersectionObserver(function (entradas) {
+    entradas.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('dentro');
+      vigia.unobserve(e.target);
+    });
+  }, { threshold: .1, rootMargin: '0px 0px -8% 0px' });
+
+  // Escalonado por sección: los hermanos entran uno detrás de otro. Hace falta
+  // un Map: usar el nodo padre como clave de un objeto lo convierte en texto y
+  // todos los grupos compartirían contador.
+  var grupos = new Map();
+  bloques.forEach(function (b) {
+    var padre = b.parentNode;
+    var n = grupos.get(padre) || 0;
+    b.style.setProperty('--espera', Math.min(n * 80, 320) + 'ms');
+    grupos.set(padre, n + 1);
+    vigia.observe(b);
+  });
+
+  // La portada no espera al scroll: ya está en pantalla.
+  requestAnimationFrame(function () {
+    document.querySelectorAll('.portada .sube').forEach(function (el) {
+      el.classList.add('dentro');
+    });
+  });
+
+  // Red de seguridad: pase lo que pase, a los 3 s se ve todo.
+  setTimeout(function () {
+    bloques.forEach(function (el) { el.classList.add('dentro'); });
+  }, 3000);
+})();
+</script>
+</body>
+</html>
